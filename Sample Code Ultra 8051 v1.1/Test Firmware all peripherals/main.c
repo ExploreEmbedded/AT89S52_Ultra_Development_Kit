@@ -10,8 +10,6 @@
 #include "delay.h"
 #include "keypad.h"
 #include "eeprom.h"
-
-
 #include "uart.c"
 #include  "rtc.c" 
 #include  "i2c.c"
@@ -33,7 +31,6 @@ void eeprom_test();
 
 #define LedOn 0xFF
 #define LedOff 0x00
-//seven segment
 #define SegmentValue P2 //PORT2.0 is connected to segment 'a'
 #define SegmentSlection P0 //PORT0.0 is selection line 'S1'
 
@@ -42,9 +39,7 @@ void eeprom_test();
 #define SegThree 0x04
 #define SegFour  0x08	 
 
-
 char mm_option;
-
 
 /* start the main program */
 void main() 
@@ -58,26 +53,21 @@ void main()
  	  	switch(mm_option)
 		{
 		 case '1': gpio_test(); break;
-	 
 		 case '2': LCD_test(); break;
-		 
 		 case '3': seg_test(); break;
-
 		 case '4': rtc_test(); break; 
-		 
 		 case '5': eeprom_test(); break; //eeprom
-		 
 		 case '6': adc_test(); break;
-		 
 		 case '7': keypad_test();break;
-		 
-
-				  
 		 default:break;
 		}
 	}
 }
 
+
+/******************************************************GPIO TEST*************************************
+   Turns ON and OFF all the ports of the 8051 micrcontroller. With the help of this you can  
+ *****************************************************GPIO TEST**************************************/
 
 void gpio_test()
 {   
@@ -92,13 +82,16 @@ void gpio_test()
 	 /* Turn off all the leds and wait for one second */
 	  P0= P1 = P2 =P3= 0x00;;
 	   DELAY_sec(1);
-	  }
+    }
 }
 
+/******************************************************LCD TEST*************************************
+					On board LCD TEST in 8 bit mode.
+*****************************************************LCD TEST**************************************/
 
 void LCD_test()
 {     
-      UART_TxString("\n\r LCD DataBus: P2 Control: RS-P0.0 RW-P0.1 E-P0.2 ");
+          UART_TxString("\n\r LCD DataBus: P2 Control: RS-P0.0 RW-P0.1 E-P0.2 ");
 	  UART_Printf("\n\r Make connections and hit 'k' to test ");
 	  while(UART_RxChar()!='k');
 	  LCD_Init(8,2,16);
@@ -106,6 +99,11 @@ void LCD_test()
 	  LCD_DisplayString("Explore Embedded!");
 	  while(1);
 }
+
+/*************************************************SEVEN SEGMENT*************************************
+ 				Displays numbers 1 2 3 4 on the on-board segments 
+*********************************************************TEST**************************************/
+
 void seg_test()
 {  
  unsigned char seg_code[]={0xC0,0xF9,0xA4,0xB0}; 
@@ -129,6 +127,10 @@ void seg_test()
 	 }  
 }
 
+/***************************************************RTC DS1307*************************************
+ 				Displays time on UART, reading from the RTC
+*********************************************************TEST**************************************/
+
 void rtc_test()
 {
     unsigned char sec,min,hour,day,month,year;
@@ -144,29 +146,27 @@ void rtc_test()
     RTC_SetTime(0x10,0x40,0x00);  //  10:40:20 am
     RTC_SetDate(0x01,0x01,0x15);  //  1st Jan 2015
 
-
-
    /* Display the Time and Date continuously */ 
    while(1)
     {
-	   
         RTC_GetTime(&hour,&min,&sec);      
         RTC_GetDate(&day,&month,&year);        
-	 
         UART_Printf("\n\rtime:%2x:%2x:%2x  \nDate:%2x/%2x/%2x",(uint16_t)hour,(uint16_t)min,(uint16_t)sec,(uint16_t)day,(uint16_t)month,(uint16_t)year);
-	    
-	  }
+     }
     
    
 }
 
+/***************************************************EEPROM*****************************************
+ 				Writes and Reads a character to and from EEPROM
+*****************************************************TEST*****************************************/
 void eeprom_test()
 {
 	 unsigned char eeprom_address=0x00, write_char = 'X', read_char;
 	 
 	UART_Printf("Connections SCL->P0.6 SDA->P0.7");
 	UART_Printf("Make connections and hit 'k' to test! ");
-    while(UART_RxChar()!='k');
+        while(UART_RxChar()!='k');
 	 UART_TxString("\n\rEeprom Write: ");      //Print the message on UART
 	 UART_TxChar(write_char);			         //Print the char to be written 
 	 EEPROM_WriteByte(eeprom_address,write_char);	// Write the data at memoryLocation	0x00
@@ -176,7 +176,9 @@ void eeprom_test()
 	 UART_TxChar(read_char);	
 }
 
-
+/***************************************************ADC *****************************************
+ 				Reads and displays ADC data from on board sensors.
+*****************************************************TEST*****************************************/
 void adc_test()
 { 
  uint16_t temp,light,pot;
@@ -195,6 +197,10 @@ void adc_test()
  }
 }
 
+
+/***************************************************KEYPAD *****************************************
+ 				Displays keys pressed on 4x4 keypad on the uart
+*****************************************************TEST*******************************************/
 void keypad_test()
 {
 uint8_t key;
