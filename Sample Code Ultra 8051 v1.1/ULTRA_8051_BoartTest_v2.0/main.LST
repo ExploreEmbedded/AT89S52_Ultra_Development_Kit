@@ -1,4 +1,4 @@
-C51 COMPILER V9.02   MAIN                                                                  02/06/2016 10:56:31 PAGE 1   
+C51 COMPILER V9.02   MAIN                                                                  02/06/2016 15:39:20 PAGE 1   
 
 
 C51 COMPILER V9.02, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   3              case '1': gpio_test(); break;
   53   3              case '2': LCD_8bit_test(); break;
   54   3              case '3': LCD_4bit_test(); break;
-C51 COMPILER V9.02   MAIN                                                                  02/06/2016 10:56:31 PAGE 2   
+C51 COMPILER V9.02   MAIN                                                                  02/06/2016 15:39:20 PAGE 2   
 
   55   3              case '4': seg_test(); break;
   56   3              case '5': rtc_test(); break;
@@ -92,17 +92,17 @@ line level    source
   80   2             {      
   81   3                /* Turn On all the leds and wait for one second */
   82   3                P0= P1 = P2 = P3 = 0xff;
-  83   3                DELAY_ms(200);
+  83   3                DELAY_ms(100);
   84   3                /* Turn off all the leds and wait for one second */
   85   3                P0= P1 = P2 = P3 = 0x00;
-  86   3                DELAY_ms(200);
+  86   3                DELAY_ms(100);
   87   3             }
   88   2            cnt=0x01;
   89   2            for(i=0;i<8;i++)
   90   2             {
   91   3               /* Turn On all the leds and wait for one second */
   92   3                P0= P1 = P2 = P3 = cnt;
-  93   3                DELAY_ms(200);
+  93   3                DELAY_ms(100);
   94   3                cnt = cnt<<1;
   95   3             }
   96   2             cnt = 0x80;
@@ -110,7 +110,7 @@ line level    source
   98   2             {
   99   3               /* Turn On all the leds and wait for one second */
  100   3                P0= P1 = P2 = P3 = cnt;
- 101   3                DELAY_ms(200);
+ 101   3                DELAY_ms(100);
  102   3                cnt = cnt>>1;
  103   3             }
  104   2          }
@@ -126,7 +126,7 @@ line level    source
  114   1          UART_Printf("\n\r Make connections and hit 'k' to test ");
  115   1          while(UART_RxChar()!='k');
  116   1          LCD_SetUp(P0_0,P0_1,P0_2,P2_0,P2_1,P2_2,P2_3,P2_4,P2_5,P2_6,P2_7);
-C51 COMPILER V9.02   MAIN                                                                  02/06/2016 10:56:31 PAGE 3   
+C51 COMPILER V9.02   MAIN                                                                  02/06/2016 15:39:20 PAGE 3   
 
  117   1          LCD_Init(2,16);
  118   1          DELAY_ms(100);
@@ -190,7 +190,7 @@ line level    source
  176          {
  177   1          rtc_t rtc;
  178   1          UART_Printf("\n\rConnections SCL->P0.6 SDA->P0.7");
-C51 COMPILER V9.02   MAIN                                                                  02/06/2016 10:56:31 PAGE 4   
+C51 COMPILER V9.02   MAIN                                                                  02/06/2016 15:39:20 PAGE 4   
 
  179   1          UART_Printf("\n\r Make connections and hit 'k' to test! ");
  180   1          while(UART_RxChar()!='k');   
@@ -254,7 +254,7 @@ line level    source
  237   1          UART_Printf("\n\rConnections: DataBus P2 Control: adc_A->P0.0 adc_B->P0.1 adc_C->P0.2 adc_ALE->P0.3 ad
              -c_Start->P0.4 adc_EOC->P0.5 adc_OE->P0.6");
  238   1          UART_Printf("\n\rMake connections and hit 'k' to test!");
-C51 COMPILER V9.02   MAIN                                                                  02/06/2016 10:56:31 PAGE 5   
+C51 COMPILER V9.02   MAIN                                                                  02/06/2016 15:39:20 PAGE 5   
 
  239   1          while(UART_RxChar()!='k');
  240   1          ADC_Init();
@@ -282,10 +282,10 @@ line level    source
  262   1          while(1)
  263   1          {
  264   2              key = KEYPAD_GetKey();
- 265   2              UART_Printf("\n\r Key:");
- 266   2              UART_TxChar(key);
- 267   2          }
- 268   1      }
+ 265   2              UART_Printf("\n\r Key:%c",key);
+ 266   2          }
+ 267   1      }
+ 268          
  269          
  270          
  271          
@@ -298,12 +298,11 @@ line level    source
  278          
  279          
  280          
- 281          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    936    ----
-   CONSTANT SIZE    =    968    ----
+   CODE SIZE        =    934    ----
+   CONSTANT SIZE    =    970    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      1      25

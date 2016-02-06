@@ -1,4 +1,4 @@
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 1   
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 1   
 
 
 C51 COMPILER V9.02, COMPILATION OF MODULE UART
@@ -62,7 +62,7 @@ line level    source
   53           * description  :This function is used to initialize the UART at specified baud rate.
   54                           If the requested baud rate is not within the supported range then
   55                           the default baud rate of 9600 is set.
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 2   
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 2   
 
   56          
   57          
@@ -126,7 +126,7 @@ line level    source
  115                          It waits till a char is received and returns it after reception.
  116          ***************************************************************************************************/
  117          char UART_RxChar(void)
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 3   
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 3   
 
  118          {
  119   1          while(RI==0);   // Wait till the data is received
@@ -190,7 +190,7 @@ line level    source
  177                                   uint8_t UART_RxString(char *ptr_string)
  178          ****************************************************************************************************
  179           * I/P Arguments: char *:  Address of the string/buffer where the received data needs to be stored
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 4   
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 4   
 
  180           * Return value : uint8_t: Number of chars received.
  181          
@@ -254,7 +254,7 @@ line level    source
  238                           The output for the input combinations is as below
  239          
  240              Binary:     1.(10,4) then 4-LSB will be transmitted ie. 1010
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 5   
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 5   
 
  241                          2.(10,8) then 8-LSB will be transmitted ie. 00001010
  242                          3.(10,2) then 2-LSB will be transmitted ie. 10     
@@ -318,7 +318,7 @@ line level    source
  300   3                  else
  301   3                  {
  302   4                      /*In case user expects more digits to be transmitted than the actual digits in number,
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 6   
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 6   
 
  303   4                        then update the remaining digits with zero.
  304   4                      Ex: v_number_u32 is 123 and user wants five digits then 00123 has to be transmitted */
@@ -382,7 +382,7 @@ line level    source
               #endif
  363          
  364          
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 7   
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 7   
 
  365          
  366          
@@ -446,7 +446,7 @@ line level    source
  424   1      
  425   1        /* Loop through the list to extract all the input arguments */
  426   1        for(ptr = argList; *ptr != '\0'; ptr++)
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 8   
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 8   
 
  427   1        {
  428   2      
@@ -475,7 +475,7 @@ line level    source
  451   3            {
  452   4            case 'C':
  453   4            case 'c':     /* Argument type is of char, hence read char data from the argp */
- 454   4              ch = va_arg(argp, uint16_t);
+ 454   4              ch = va_arg(argp, uint8_t);
  455   4              UART_TxChar(ch);
  456   4              break;
  457   4      
@@ -510,7 +510,7 @@ line level    source
  486   4              break;      
  487   4      
  488   4            case 'x':  /* Argument type is of hex, hence hexadecimal data from the argp */
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 9   
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 9   
 
  489   4              v_num_u16 = va_arg(argp, uint16_t);       
  490   4              UART_TxNumber(C_HEX_U8,v_num_u16,v_numOfDigitsToTransmit_u8);     
@@ -574,9 +574,9 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-C51 COMPILER V9.02   UART                                                                  02/06/2016 10:56:31 PAGE 10  
+C51 COMPILER V9.02   UART                                                                  02/06/2016 15:39:20 PAGE 10  
 
-   CODE SIZE        =   1110    ----
+   CODE SIZE        =   1108    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

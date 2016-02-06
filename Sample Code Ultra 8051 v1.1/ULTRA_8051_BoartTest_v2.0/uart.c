@@ -451,7 +451,7 @@ void UART_Printf(const char *argList, ...)
 			{
 			case 'C':
 			case 'c':     /* Argument type is of char, hence read char data from the argp */
-				ch = va_arg(argp, uint16_t);
+				ch = va_arg(argp, uint8_t);
 				UART_TxChar(ch);
 				break;
 

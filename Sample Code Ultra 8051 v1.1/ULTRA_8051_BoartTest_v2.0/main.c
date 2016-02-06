@@ -80,17 +80,17 @@ void gpio_test()
        {			
 			    /* Turn On all the leds and wait for one second */
           P0= P1 = P2 = P3 = 0xff;
-          DELAY_ms(200);
+          DELAY_ms(100);
           /* Turn off all the leds and wait for one second */
           P0= P1 = P2 = P3 = 0x00;
-          DELAY_ms(200);
+          DELAY_ms(100);
 			 }
 			cnt=0x01;
 			for(i=0;i<8;i++)
 			 {
 				 /* Turn On all the leds and wait for one second */
           P0= P1 = P2 = P3 = cnt;
-          DELAY_ms(200);
+          DELAY_ms(100);
 				  cnt = cnt<<1;
 			 }
 			 cnt = 0x80;
@@ -98,7 +98,7 @@ void gpio_test()
 			 {
 				 /* Turn On all the leds and wait for one second */
           P0= P1 = P2 = P3 = cnt;
-          DELAY_ms(200);
+          DELAY_ms(100);
 				  cnt = cnt>>1;
 			 }
     }
@@ -262,8 +262,7 @@ void keypad_test()
     while(1)
     {
         key = KEYPAD_GetKey();
-        UART_Printf("\n\r Key:");
-			  UART_TxChar(key);
+        UART_Printf("\n\r Key:%c",key);
     }
 }
 

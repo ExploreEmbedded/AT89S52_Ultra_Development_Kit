@@ -1,4 +1,4 @@
-C51 COMPILER V9.02   I2C                                                                   02/06/2016 10:56:30 PAGE 1   
+C51 COMPILER V9.02   I2C                                                                   02/06/2016 15:39:19 PAGE 1   
 
 
 C51 COMPILER V9.02, COMPILATION OF MODULE I2C
@@ -62,7 +62,7 @@ line level    source
   52          static void i2c_NoAck(void);
   53          /**************************************************************************************************/
   54          
-C51 COMPILER V9.02   I2C                                                                   02/06/2016 10:56:30 PAGE 2   
+C51 COMPILER V9.02   I2C                                                                   02/06/2016 15:39:19 PAGE 2   
 
   55          
   56          
@@ -126,7 +126,7 @@ line level    source
  114                                   void I2C_Stop(void)
  115          ****************************************************************************************************
  116           * I/P Arguments: none.
-C51 COMPILER V9.02   I2C                                                                   02/06/2016 10:56:30 PAGE 3   
+C51 COMPILER V9.02   I2C                                                                   02/06/2016 15:39:19 PAGE 3   
 
  117           * Return value  : none
  118          
@@ -190,7 +190,7 @@ line level    source
  176   2          i2c_Clock();                   // Generate Clock at SCL
  177   2          var_i2cData_u8 = var_i2cData_u8<<1;// Bring the next bit to be transmitted to MSB position
  178   2        }
-C51 COMPILER V9.02   I2C                                                                   02/06/2016 10:56:30 PAGE 4   
+C51 COMPILER V9.02   I2C                                                                   02/06/2016 15:39:19 PAGE 4   
 
  179   1                                   
  180   1        i2c_Clock();
@@ -254,7 +254,7 @@ line level    source
  238          
  239          
  240          /***************************************************************************************************
-C51 COMPILER V9.02   I2C                                                                   02/06/2016 10:56:30 PAGE 5   
+C51 COMPILER V9.02   I2C                                                                   02/06/2016 15:39:19 PAGE 5   
 
  241                                          Local functions
  242          ***************************************************************************************************/
@@ -318,7 +318,7 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-C51 COMPILER V9.02   I2C                                                                   02/06/2016 10:56:30 PAGE 6   
+C51 COMPILER V9.02   I2C                                                                   02/06/2016 15:39:19 PAGE 6   
 
    CODE SIZE        =    193    ----
    CONSTANT SIZE    =   ----    ----
